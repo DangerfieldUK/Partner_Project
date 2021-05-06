@@ -65,7 +65,16 @@ namespace PartnerProject
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+
+                /*  This code block was to attempt implementing user home as a route - save for later
+                 *  
+                endpoints.MapControllerRoute(
+                    name: "userHome",
+                    pattern: "{controller=UserHome}/{action=Index}/{id?}");
+                */          
             });
+
+           
         }
     }
 }
