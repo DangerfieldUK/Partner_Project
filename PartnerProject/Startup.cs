@@ -30,7 +30,7 @@ namespace PartnerProject
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            services.AddDbContext<UserDbContext>()
+            services.AddDbContext<UserDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

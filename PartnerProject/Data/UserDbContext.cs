@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using PartnerProject.Models.Indentity;
 using System;
 using System.Collections.Generic;
@@ -9,14 +10,16 @@ namespace PartnerProject.Data
 {
     public class UserDbContext : DbContext
     {
-        public UserDbContext() : base()
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            Database.SetInitializer<UserDbContext>(new CreateDatabaseIfNotExists<UserDbContext>());
+            IConfigurationRoot configuration = new ConfigurationBuilder()
 
-            //Database.SetInitializer<SchoolDBContext>(new DropCreateDatabaseIfModelChanges<SchoolDBContext>());
-            //Database.SetInitializer<SchoolDBContext>(new DropCreateDatabaseAlways<SchoolDBContext>());
-            //Database.SetInitializer<SchoolDBContext>(new SchoolDBInitializer());
+                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                .AddJsonFile("appsettings.json")
+                .Build();
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
         }
         public DbSet<User> Users { get; set; }
     }
 }
+
