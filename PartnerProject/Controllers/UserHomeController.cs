@@ -15,7 +15,7 @@ namespace PartnerProject.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            return View();
+            return View("UserHome");
         }
     }
 }

@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace PartnerProject.Models.Indentity
 {
-    public class User : IdentityUser<int>
+    public class UserRole : IdentityRole<int>
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using PartnerProject.Data;
 
 namespace PartnerProject.Migrations
 {
-    [DbContext(typeof(UserDbContext))]
+    [DbContext(typeof(UserAccountDbContext))]
     partial class UserDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

@@ -1,17 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PartnerProject.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using PartnerProject.Models.Identity;
 
 namespace PartnerProject
 {
@@ -30,7 +23,9 @@ namespace PartnerProject
             services.AddControllersWithViews();
             services.AddRazorPages();
 
-            services.AddDbContext<UserDbContext>();
+            services.AddDbContext<UserAccountDbContext>();
+
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<UserAccountDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

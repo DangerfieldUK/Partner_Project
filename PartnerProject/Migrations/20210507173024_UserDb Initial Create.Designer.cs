@@ -8,7 +8,7 @@ using PartnerProject.Data;
 
 namespace PartnerProject.Migrations
 {
-    [DbContext(typeof(UserDbContext))]
+    [DbContext(typeof(UserAccountDbContext))]
     [Migration("20210507173024_UserDb Initial Create")]
     partial class UserDbInitialCreate
     {
