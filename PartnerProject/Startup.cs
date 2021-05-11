@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PartnerProject.Models.Identity;
+using PartnerProject.Models.Indentity;
 
 namespace PartnerProject
 {
@@ -25,7 +26,10 @@ namespace PartnerProject
 
             services.AddDbContext<UserAccountDbContext>();
 
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<UserAccountDbContext>();
+            services.AddIdentity<User, UserRole>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+            }).AddEntityFrameworkStores<UserAccountDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,10 +66,10 @@ namespace PartnerProject
                 endpoints.MapControllerRoute(
                     name: "userHome",
                     pattern: "{controller=UserHome}/{action=Index}/{id?}");
-                */          
+                */
             });
 
-           
+
         }
     }
 }
